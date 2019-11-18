@@ -1,0 +1,23 @@
+﻿@model List<E_Auction.ViewModels.UserRolesViewModel>
+@{
+    ViewBag.Title = "Users";
+}
+
+<table class="table table-hover">
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.RoleName</td>
+            <td>
+                @Html.ActionLink(
+           "Изменить",
+           "EditUser",
+           "UserRoles",
+           new {userId=user.UserID},
+           new { @class = "btn btn-success" }
+           )
+        </td>
+    </tr>
+}
+</table>

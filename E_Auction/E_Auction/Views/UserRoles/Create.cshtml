@@ -1,0 +1,17 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create", "UserRoles", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, "Название роли:")
+        @Html.TextBoxFor(m => m.Name, new
+        {
+            @class="form-control"
+        })
+    </div>
+
+    <button type="submit" class="btn btn-success">Сохранить</button>
+}

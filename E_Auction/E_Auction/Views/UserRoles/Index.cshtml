@@ -1,0 +1,73 @@
+﻿@model List<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+@{
+    ViewBag.Title = "Роли";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading panel-title">
+        @ViewBag.Title
+    </div>
+    <div class="panel-body">
+        @Html.ActionLink("Добавить",
+            "Create",
+            "UserRoles")
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Название роли</th>
+                    <th>Редактировать</th>
+                    <th>Удалить</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var role in Model)
+                {
+                    <tr data-role-id='@role.Id'>
+                        <td>@role.Name</td>
+                        <td>
+                            @Html.ActionLink("Изменить",
+                                "Edit",
+                                    "UserRoles",
+                                    new {roleID = role.Id},
+                                null)
+                        </td>
+
+                        <td>
+                            <button onclick="remove('@role.Id')" class="btn btn-danger">Удалить</button>
+                        </td>
+
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    function remove(roleId) {
+        function removeRoleRow(data) {
+            if (data.statusCode!=204) {
+                alertError(data)
+                return
+            }
+            const trSelect = 'tr[data-role-id="' + roleId + '"]';
+            const trElement = document.querySelector(trSelect);
+            console.log(trElement)
+            trElement.remove()
+        }
+        function alertError(data) {
+            alert(data.message)
+        }
+        $.ajax({
+            contentType: 'application/json',
+            url: '@Url.Action("Remove","UserRoles")'+ '?roleId='+ roleId,
+            type:'POST',
+            success: removeRoleRow,
+            error: alertError
+        })
+
+    }
+</script>

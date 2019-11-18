@@ -1,0 +1,51 @@
+﻿@model IEnumerable<E_Auction.Models.Bid>
+
+@{
+    ViewBag.Title = "Bids";
+}
+
+<h2>Bids</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BidRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LotId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BidDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BidRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LotId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BidDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BidId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BidId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BidId })
+        </td>
+    </tr>
+}
+
+</table>

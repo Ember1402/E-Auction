@@ -1,0 +1,75 @@
+﻿@model IEnumerable<E_Auction.Models.Lot>
+
+@{
+    ViewBag.Title = "MyAutions";
+}
+
+<h2>MyAutions</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BeginCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BeginCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @if (item.Image != null)
+            {
+
+                @Html.Raw("<img style='width:80; height:80px;' src=\"data:image/jpeg;base64,"
+                                    + Convert.ToBase64String(item.Image) + "\" />")
+
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "EditLot", new { id = item.LotId }) |
+            @Html.ActionLink("Показать ставки", "Bids", new { id = item.LotId }) |
+            @Html.ActionLink("Удалить", "DeleteLot", new { id = item.LotId })
+        </td>
+    </tr>
+}
+
+</table>
