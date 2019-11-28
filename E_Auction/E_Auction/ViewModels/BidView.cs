@@ -17,6 +17,7 @@ namespace E_Auction.ViewModels
         public string BidOwnerName { get; set; }
         [Display(Name ="Дата ставки")]
         public DateTime BidDate { get; set; }
+        [Display(Name ="Актуальная сумма")]
         public decimal? CurrentLotRate { get; set; }
     }
 }

@@ -37,7 +37,7 @@ namespace E_Auction.Models
 
         [DisplayName("Статус")]
         public LotStatus Status { get; set; }
-
+        [DisplayName("Изображение")]
         public byte[] Image { get; set; }
         public string DateString { get; set; }
     }
