@@ -6,9 +6,6 @@
 
 <h2>MyBids</h2>
 
-<p>
-    @Html.ActionLink("Create New", "AddBid", new { id = ViewBag.LotId })
-</p>
 <table class="table">
     <tr>
         <th>
@@ -35,12 +32,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.BidDate)
             </td>
-            @*<td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.BidId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.BidId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.BidId })
-                </td>*@
+            <td>
+                @Html.ActionLink("Обновить", "AddBid", new { id = item.LotId }, new { @class = "btn btn-success" }))
+                @*@Html.ActionLink("Удалить", "DeleteBid", new { id = item.BidId }, new { @class = "btn btn-success" }))*@
+            </td>
         </tr>
     }
 
 </table>
+

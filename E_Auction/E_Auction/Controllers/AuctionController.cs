@@ -99,6 +99,8 @@ namespace E_Auction.Controllers
                     if (lotName!=null)
                     {
                         var bidView = new BidView();
+                        bidView.BidId = bid.BidId;
+                        bidView.LotId = bid.LotId;
                         bidView.BidRate = bid.BidRate;
                         var ownerName = _users.Users.FirstOrDefault(u => u.Id == bid.UserId);
                         bidView.BidOwnerName = ownerName.UserName;

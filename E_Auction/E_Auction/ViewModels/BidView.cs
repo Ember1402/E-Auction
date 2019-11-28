@@ -7,6 +7,8 @@ namespace E_Auction.ViewModels
 {
     public class BidView
     {
+        public int BidId { get; set; }
+        public int LotId { get; set; }
         public decimal BidRate { get; set; }
         public string LotName { get; set; }
         public string BidOwnerName { get; set; }

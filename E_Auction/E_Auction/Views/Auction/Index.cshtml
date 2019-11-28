@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<E_Auction.Models.Lot>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Аукционы";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "AddLot")
+    @Html.ActionLink("Начать аукцион", "AddLot")
 </p>
-<table class="table">
+<table class="table table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -68,8 +68,8 @@
 
 
         <td>
-            @Html.ActionLink("Сделать Ставку", "AddBid", new { id = item.LotId }) |
-            @Html.ActionLink("Показать ставки", "Bids1", new { id = item.LotId })
+            @Html.ActionLink("Сделать Ставку", "AddBid", new { id = item.LotId }, new { @class = "btn btn-success" } ) |
+            @Html.ActionLink("Показать ставки", "Bids1", new { id = item.LotId }, new { @class = "btn btn-success" })
         </td>
     </tr>
     }
