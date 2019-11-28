@@ -25,24 +25,28 @@
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BidRate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LotName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BidDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CurrentLotRate)
-        </td>
-        <td>
-            @Html.ActionLink("Обновить", "AddBid", new { id = item.LotId }, new { @class = "btn btn-success" }))
-            @*@Html.ActionLink("Удалить", "DeleteBid", new { id = item.BidId }, new { @class = "btn btn-success" }))*@
-        </td>
-    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BidRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LotName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BidDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentLotRate)
+            </td>
+            <td>
+                @if (item.CurrentLotRate != null)
+                {
+                    @Html.ActionLink("Обновить", "AddBid", new { id = item.LotId }, new { @class = "btn btn-success" })
+                }
+
+                @*@Html.ActionLink("Удалить", "DeleteBid", new { id = item.BidId }, new { @class = "btn btn-success" }))*@
+            </td>
+        </tr>
     }
 
 </table>
